@@ -34,6 +34,6 @@ jobs:
     - name: Build and deploy the website example
       run: |
         mkdir -p ~/.ssh
-        "${{ secrets.cyhserver }}" > ~/.ssh/test.key
+        echo "${{ secrets.cyhserver }}" > ~/.ssh/test.key
         chmod 600 ~/.ssh/test.key
         ssh -i ~/.ssh/test.key root@120.79.223.34
