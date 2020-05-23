@@ -33,5 +33,6 @@ jobs:
         echo test, and deploy your project.
     - name: Build and deploy the website example
       run: |
-        ssh -i <(echo "${{ secrets.cyhserver }}") root@120.79.223.34
+        ssh-add - <<< "${{ secrets.cyhserver }}"
+        ssh root@120.79.223.34
 
