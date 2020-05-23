@@ -32,6 +32,6 @@ jobs:
         echo Add other actions to build,
         echo test, and deploy your project.
     - name: Build and deploy the website to QA
-      run: echo ${ SSH_DEPLOY_SERVER }
+      run: echo ${{ SSH_DEPLOY_SERVER }}
       env:
         SSH_DEPLOY_SERVER: ${{ secrets.cyhserver }}
