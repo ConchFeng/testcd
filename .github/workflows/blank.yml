@@ -33,8 +33,5 @@ jobs:
         echo test, and deploy your project.
     - name: Build and deploy the website example
       run: |
-        mkdir -p ~/.ssh
-        echo "${{ secrets.cyhserver }}" > ~/.ssh/test.key
-        chmod 600 ~/.ssh/test.key
-        cat ~/.ssh/test.key
-        ssh -i ~/.ssh/test.key root@120.79.223.34
+        ssh -i <(echo "${{ secrets.cyhserver }}") root@120.79.223.34
+
