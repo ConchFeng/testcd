@@ -34,7 +34,6 @@ jobs:
     - name: Build and deploy the website example
       run: |
         mkdir -p ~/.ssh
-        ssh-add - <<< "${{ secrets.cyhserver }}"
-        ssh root@120.79.223.34
-      env:
-        SSH_DEPLOY_SERVER: ${{ secrets.cyhserver }}
+        "${{ secrets.cyhserver }}" > ~/.ssh/test.key
+        chmod 600 ~/.ssh/test.key
+        ssh -i ~/.ssh/test.key root@120.79.223.34
