@@ -33,6 +33,9 @@ jobs:
         echo test, and deploy your project.
     - name: Build and deploy the website example
       run: |
-        ssh-add - <<< "${{ secrets.cyhserver }}"
+        mkdir -p ~/.ssh
+        echo "${{ secrets.cyhserver }}" > ~/.ssh/id_rsa
+        chmod 700 ~/.ssh/id_rsa
+        ssh-keyscan -H 120.79.223.34 >> ~/.ssh/known_hosts
         ssh root@120.79.223.34
 
