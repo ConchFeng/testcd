@@ -31,10 +31,12 @@ jobs:
       run: |
         echo Add other actions to build,
         echo test, and deploy your project.
-    - name: Build and deploy the website to QA
+    - name: Build and deploy the website example
       run: |
         mkdir -p ~/.ssh
         ssh-keyscan 120.79.223.34 >> ~/.ssh/known_hosts
+        ssh-agent -a "/tmp/ssh_agent.sock" > /dev/null
         ssh-add - <<< "${{ secrets.cyhserver }}"
+        ssh root@120.79.223.34
       env:
         SSH_DEPLOY_SERVER: ${{ secrets.cyhserver }}
